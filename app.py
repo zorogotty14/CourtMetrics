@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 # Flask Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Test1234!@localhost:5434/capstone_project'
-app.config['SECRET_KEY'] = 'capstone-project'
+app.config['SECRET_KEY'] = ''
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
