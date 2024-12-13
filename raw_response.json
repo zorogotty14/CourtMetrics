@@ -1,0 +1,175 @@
+{
+  "players": {
+    "rafaelNadal": {
+      "playerOverview": {
+        "fullName": "Rafael Nadal Parera",
+        "nationality": "Spanish",
+        "dateOfBirth": "1986-06-03",
+        "height": 185,
+        "weight": 85,
+        "playingHand": "Left-handed",
+        "playingStyle": "Aggressive baseline player with heavy topspin",
+        "turnedProYear": 2001
+      },
+      "careerHighlights": {
+        "totalCareerTitles": 92,
+        "grandSlamWins": 22,
+        "olympicMedals": {
+          "total": 2,
+          "details": {
+            "goldSingles": 1,
+            "goldDoubles": 1,
+            "silver": 0,
+            "bronze": 0
+          }
+        },
+        "careerPrizeMoney": 134640000,
+        "careerHighRanking": 1,
+        "currentRanking": 3,
+        "yearEndNo1Rankings": [2008, 2010, 2013, 2017, 2019]
+      },
+      "headToHeadRecords": {
+        "totalMatchesPlayed": 6,
+        "winsByNadal": 5,
+        "winsByMedvedev": 1,
+        "winsBySurface": {
+          "hard": {
+            "nadal": 4,
+            "medvedev": 1
+          },
+          "clay": {
+            "nadal": 1,
+            "medvedev": 0
+          },
+          "grass": {
+            "nadal": 0,
+            "medvedev": 0
+          }
+        },
+        "historicalTrends": "Nadal has dominated their encounters, particularly on hard courts."
+      },
+      "performanceStatistics": {
+        "overallWinPercentage": 83.2,
+        "serviceStats": {
+          "aces": 3700,
+          "doubleFaults": 1600,
+          "firstServePercentage": 68,
+          "firstServePointsWon": 74,
+          "secondServePointsWon": 57
+        },
+        "returnStats": {
+          "firstServeReturnPointsWon": 34,
+          "secondServeReturnPointsWon": 56
+        },
+        "tiebreakRecord": {
+          "played": 320,
+          "won": 200
+        }
+      },
+      "tournamentHistory": {
+        "grandSlamPerformances": {
+          "australianOpen": "Winner (2009)",
+          "frenchOpen": "Winner (2005-2008, 2010-2014, 2017-2020, 2022)",
+          "wimbledon": "Winner (2008, 2010)",
+          "usOpen": "Winner (2010, 2013, 2017, 2019)"
+        },
+        "atpFinalsTitles": 0,
+        "mastersTitles": 36
+      },
+      "rankingProgression": [
+        {"year": 2005, "ranking": 2},
+        {"year": 2010, "ranking": 1},
+        {"year": 2015, "ranking": 5},
+        {"year": 2020, "ranking": 2}
+      ],
+      "historicalTrends": {
+        "matchWinStreaks": 32,
+        "performanceAgainstTop10Players": 62.5,
+        "notableUpsets": "Defeated Roger Federer in the 2008 Wimbledon final."
+      }
+    },
+    "daniilMedvedev": {
+      "playerOverview": {
+        "fullName": "Daniil Sergeyevich Medvedev",
+        "nationality": "Russian",
+        "dateOfBirth": "1996-02-11",
+        "height": 198,
+        "weight": 83,
+        "playingHand": "Right-handed",
+        "playingStyle": "Counterpuncher with a strong backhand",
+        "turnedProYear": 2014
+      },
+      "careerHighlights": {
+        "totalCareerTitles": 20,
+        "grandSlamWins": 1,
+        "olympicMedals": {
+          "total": 0,
+          "details": {}
+        },
+        "careerPrizeMoney": 29564000,
+        "careerHighRanking": 1,
+        "currentRanking": 5,
+        "yearEndNo1Rankings": []
+      },
+      "headToHeadRecords": {
+        "totalMatchesPlayed": 6,
+        "winsByNadal": 5,
+        "winsByMedvedev": 1,
+        "winsBySurface": {
+          "hard": {
+            "nadal": 4,
+            "medvedev": 1
+          },
+          "clay": {
+            "nadal": 1,
+            "medvedev": 0
+          },
+          "grass": {
+            "nadal": 0,
+            "medvedev": 0
+          }
+        },
+        "historicalTrends": "Medvedev has struggled against Nadal, with his sole victory on hard court."
+      },
+      "performanceStatistics": {
+        "overallWinPercentage": 73.4,
+        "serviceStats": {
+          "aces": 4200,
+          "doubleFaults": 1600,
+          "firstServePercentage": 63,
+          "firstServePointsWon": 78,
+          "secondServePointsWon": 52
+        },
+        "returnStats": {
+          "firstServeReturnPointsWon": 31,
+          "secondServeReturnPointsWon": 50
+        },
+        "tiebreakRecord": {
+          "played": 210,
+          "won": 130
+        }
+      },
+      "tournamentHistory": {
+        "grandSlamPerformances": {
+          "australianOpen": "Finalist (2021, 2022)",
+          "frenchOpen": "Quarterfinalist (2021)",
+          "wimbledon": "Fourth Round (2021)",
+          "usOpen": "Winner (2021)"
+        },
+        "atpFinalsTitles": 1,
+        "mastersTitles": 6
+      },
+      "rankingProgression": [
+        {"year": 2019, "ranking": 4},
+        {"year": 2020, "ranking": 4},
+        {"year": 2021, "ranking": 2},
+        {"year": 2022, "ranking": 1}
+      ],
+      "historicalTrends": {
+        "matchWinStreaks": 20,
+        "performanceAgainstTop10Players": 55.1,
+        "notableUpsets": "Defeated Novak Djokovic in the 2021 US Open final."
+      }
+    }
+  }
+}

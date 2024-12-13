@@ -1,0 +1,172 @@
+{
+  "players": {
+    "daniilMedvedev": {
+      "playerOverview": {
+        "fullName": "Daniil Medvedev",
+        "nationality": "Russian",
+        "dateOfBirth": "1996-02-11",
+        "height": 198,
+        "weight": 83,
+        "playingHand": "Right-handed",
+        "playingStyle": "Aggressive baseliner with a powerful serve",
+        "turnedProYear": 2014
+      },
+      "careerHighlights": {
+        "totalCareerTitles": 20,
+        "grandSlamWins": 1,
+        "olympicMedals": {
+          "total": 0,
+          "details": []
+        },
+        "careerPrizeMoney": 31785620,
+        "careerHighRanking": 1,
+        "currentRanking": 3,
+        "yearEndNo1Rankings": []
+      },
+      "headToHeadRecords": {
+        "totalMatchesPlayed": 15,
+        "winsByMedvedev": 9,
+        "winsByZverev": 6,
+        "winsBySurface": {
+          "hard": {
+            "medvedev": 8,
+            "zverev": 5
+          },
+          "clay": {
+            "medvedev": 1,
+            "zverev": 1
+          },
+          "grass": {
+            "medvedev": 0,
+            "zverev": 0
+          }
+        },
+        "historicalTrends": "Medvedev has a stronger record on hard courts, while Zverev has managed to win key matches on clay."
+      },
+      "performanceStatistics": {
+        "overallWinPercentage": 73.4,
+        "serviceStats": {
+          "aces": 5200,
+          "doubleFaults": 1200,
+          "firstServePercentage": 63,
+          "firstServePointsWon": 76,
+          "secondServePointsWon": 54
+        },
+        "returnStats": {
+          "firstServeReturnPointsWon": 34,
+          "secondServeReturnPointsWon": 52
+        },
+        "tiebreakRecord": "32-24"
+      },
+      "tournamentHistory": {
+        "grandSlamPerformances": {
+          "australianOpen": "Finalist (2021, 2022)",
+          "frenchOpen": "Quarterfinals (2021)",
+          "wimbledon": "Fourth Round (2021)",
+          "usOpen": "Winner (2021)"
+        },
+        "atpFinalsTitles": 1,
+        "mastersTitles": 6
+      },
+      "rankingProgression": [
+        {"year": 2016, "ranking": 99},
+        {"year": 2017, "ranking": 65},
+        {"year": 2018, "ranking": 16},
+        {"year": 2019, "ranking": 4},
+        {"year": 2020, "ranking": 4},
+        {"year": 2021, "ranking": 2},
+        {"year": 2022, "ranking": 1},
+        {"year": 2023, "ranking": 3}
+      ],
+      "historicalTrends": {
+        "matchWinStreaks": 20,
+        "performanceAgainstTop10Players": 60.2,
+        "notableUpsets": "Defeated Novak Djokovic in the 2021 US Open final to win his first Grand Slam."
+      }
+    },
+    "alexanderZverev": {
+      "playerOverview": {
+        "fullName": "Alexander Zverev",
+        "nationality": "German",
+        "dateOfBirth": "1997-04-20",
+        "height": 198,
+        "weight": 90,
+        "playingHand": "Right-handed",
+        "playingStyle": "Aggressive baseline player with strong serve and forehand",
+        "turnedProYear": 2013
+      },
+      "careerHighlights": {
+        "totalCareerTitles": 19,
+        "grandSlamWins": 0,
+        "olympicMedals": {
+          "total": 1,
+          "details": ["Gold in singles at Tokyo 2020"]
+        },
+        "careerPrizeMoney": 30752000,
+        "careerHighRanking": 2,
+        "currentRanking": 7,
+        "yearEndNo1Rankings": []
+      },
+      "headToHeadRecords": {
+        "totalMatchesPlayed": 15,
+        "winsByMedvedev": 9,
+        "winsByZverev": 6,
+        "winsBySurface": {
+          "hard": {
+            "medvedev": 8,
+            "zverev": 5
+          },
+          "clay": {
+            "medvedev": 1,
+            "zverev": 1
+          },
+          "grass": {
+            "medvedev": 0,
+            "zverev": 0
+          }
+        },
+        "historicalTrends": "Zverev has had success against Medvedev on clay and in crucial matchups."
+      },
+      "performanceStatistics": {
+        "overallWinPercentage": 69.5,
+        "serviceStats": {
+          "aces": 4500,
+          "doubleFaults": 1600,
+          "firstServePercentage": 65,
+          "firstServePointsWon": 75,
+          "secondServePointsWon": 52
+        },
+        "returnStats": {
+          "firstServeReturnPointsWon": 33,
+          "secondServeReturnPointsWon": 51
+        },
+        "tiebreakRecord": "40-30"
+      },
+      "tournamentHistory": {
+        "grandSlamPerformances": {
+          "australianOpen": "Semifinalist (2020)",
+          "frenchOpen": "Semifinalist (2021, 2022)",
+          "wimbledon": "Fourth Round (2017)",
+          "usOpen": "Finalist (2020)"
+        },
+        "atpFinalsTitles": 2,
+        "mastersTitles": 5
+      },
+      "rankingProgression": [
+        {"year": 2016, "ranking": 24},
+        {"year": 2017, "ranking": 4},
+        {"year": 2018, "ranking": 4},
+        {"year": 2019, "ranking": 7},
+        {"year": 2020, "ranking": 7},
+        {"year": 2021, "ranking": 3},
+        {"year": 2022, "ranking": 4},
+        {"year": 2023, "ranking": 7}
+      ],
+      "historicalTrends": {
+        "matchWinStreaks": 13,
+        "performanceAgainstTop10Players": 55.3,
+        "notableUpsets": "Defeated Novak Djokovic in the semifinals of Tokyo 2020, eventually winning the gold medal."
+      }
+    }
+  }
+}

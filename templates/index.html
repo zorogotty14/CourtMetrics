@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <!-- Left Section: Upcoming Matches -->
+    <div class="left-tab">
+        <h2>Recent Matches</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Home Player</th>
+                    <th>Away Player</th>
+                    <th>Home Player Score</th>
+                    <th>Away Player Score</th>
+                    <th>Ground Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in upcoming_matches %}
+                    <tr>
+                        <td>{{ event.homeTeam.name }}</td>
+                        <td>{{ event.awayTeam.name }}</td>
+                        <td>{{ event.homeScore.current }}</td>
+                        <td>{{ event.awayScore.current }}</td>
+                        <td>{{ event.groundType }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Main Section: Upload Form -->
+    <div class="main-content">
+        <h1>Upload or Enter a YouTube Link</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="player1">Player 1:</label>
+            <input type="text" id="player1" name="player1" required><br><br>
+
+            <label for="player2">Player 2:</label>
+            <input type="text" id="player2" name="player2" required><br><br>
+
+            <label for="video_url">YouTube Video URL:</label>
+            <input type="text" id="video_url" name="video_url"><br><br>
+
+            <h2>OR</h2>
+            <label for="file">Choose Video File:</label>
+            <input type="file" name="file" accept="video/*"><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Right Section: Rankings -->
+    <div class="right-tab">
+        <h2>Rankings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player Name</th>
+                    <th>Points</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in top_10_players %}
+                    <tr>
+                        <td>{{ player.ranking }}</td>
+                        <td><a href="/player/{{ player.team.name }}">{{ player.team.name }}</a></td>
+                        <td>{{ player.points }}</td>
+                        <td>{{ player.team.country.name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

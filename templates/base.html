@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if current_user.is_authenticated %}
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
+                <li><a href="/rankings" class="{{ 'active' if request.path == '/rankings' else '' }}">Rankings</a></li>
+                <li><a href="/schedule" class="{{ 'active' if request.path == '/schedule' else '' }}">Schedule</a></li>
+                <li><a href="/about" class="{{ 'active' if request.path == '/about' else '' }}">About</a></li>
+            </ul>
+            <form class="search-bar" action="/player_search" method="GET">
+                <input type="text" name="query" placeholder="Search player">
+                <input type="submit" value="Search">
+            </form>
+            <ul class="auth-links">
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% endif %}
+    <div class="page-container">
+        {% block left_tab %}{% endblock %}
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+        {% block right_tab %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2024 CourtMetrics Dashboard</p>
+    </footer>
+</body>
+</html>
