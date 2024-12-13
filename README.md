@@ -96,11 +96,6 @@ Below is a walkthrough video demonstrating the project:
 
 ---
 
-### **Deployment Details**
-
-The deployed application for the project can be accessed at the following link:
-
-[Deployed Application](http://capstone-project-group8.westus2.cloudapp.azure.com:5000/)
 
 #### **Important Notes:**
 - The version deployed at the above link is an **older version** of the application.
