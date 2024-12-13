@@ -39,8 +39,8 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # Define your Azure OpenAI endpoint and API key
-ENDPOINT = "https://capstone-project.cognitiveservices.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-08-01-preview"
-API_KEY = "1BMz0wKtTR35QAuocSJmZGR6nSut2OFfq9gOUOPbNtcr3vTmnupWJQQJ99ALAC4f1cMXJ3w3AAAAACOGqweh"  # Replace with your actual API key
+ENDPOINT = ""
+API_KEY = ""  # Replace with your actual API key
 
 
 
@@ -343,8 +343,8 @@ def play_video(video_file):
     return render_template('play.html', video_url=video_url)
 
 # API keys and headers for Tennis API
-# RAPIDAPI_KEY = 'd53a40c9bdmsh245afa9648bf057p1162f9jsn3339b9778f0a'
-RAPIDAPI_KEY = 'a4194f971amsh34f35d4813b3dc0p18c3dfjsn85c4d9ddd8a0'
+# RAPIDAPI_KEY = ''
+RAPIDAPI_KEY = '' #replace with you rapid api key
 HEADERS = {
     'x-rapidapi-key': RAPIDAPI_KEY,
     'x-rapidapi-host': 'tennisapi1.p.rapidapi.com'
