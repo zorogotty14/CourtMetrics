@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 32px;
+    color: #1d428a; /* Dark blue similar to ESPN */
+    border-bottom: 2px solid #e00e2b; /* ESPN-style red underline */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+strong {
+    color: #1d428a;
+}
+
+.profile-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile-item {
+    flex: 1 1 45%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #e00e2b;
+}
+
+.profile-item p {
+    margin: 5px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #1d428a;
+    color: #fff;
+    margin-top: 20px;
+}

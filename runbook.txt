@@ -1,0 +1,113 @@
+scp -i "C:/Users/gauth/Desktop/courses/capstone/project-code/capstone-project-deploy/capstone-project-group-8-key.pem" .\capstone-project.zip azureuser@20.64.237.114:/home/azureuser/capstone-project/.
+
+sudo apt update
+sudo apt install -y software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+
+sudo apt install -y python3.11 python3.11-venv python3.11-dev
+
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+sudo update-alternatives --config python3
+
+sudo apt install -y python3-pip
+
+python3.11 -m venv myenv
+source myenv/bin/activate
+
+sudo apt install unzip 
+
+unzip capston-project.zip
+
+pip install -r requirements.txt
+
+sudo apt install postgresql postgresql-contrib
+
+sudo service postgresql start
+
+sudo -u postgres psql
+CREATE DATABASE capstone_project;
+CREATE USER postgres1 WITH PASSWORD 'Test1234!';
+GRANT ALL PRIVILEGES ON DATABASE capstone_project TO postgres1;
+
+sudo mysql -u root -p
+CREATE DATABASE flask_app_db;
+CREATE USER 'flask_user'@'localhost' IDENTIFIED BY 'Test1234!';
+GRANT ALL PRIVILEGES ON flask_app_db.* TO 'flask_user'@'localhost';
+
+pip install pymysql
+pip install cryptography
+
+export flask_app=app.py
+
+sudo ufw allow 5434
+sudo ufw allow 5000
+
+sudo apt install mysql-server
+sudo service mysql start
+
+flask db init
+flask db migrate -m "Initial migration"
+flask db revision -m "Add users table"
+
+op.create_table(
+    'users',
+    sa.Column('id', sa.Integer, primary_key=True),
+    sa.Column('name', sa.String(length=150), nullable=False),
+    sa.Column('email', sa.String(length=150), nullable=False, unique=True),
+    sa.Column('password_hash', sa.String(length=200)),
+    sa.Column('created_at', sa.DateTime, nullable=True),
+)
+
+flask db upgrade
+
+app.run(host='0.0.0.0', port=5000, debug=True)
+sudo ufw allow 5000
+sudo ufw enable
+
+sudo apt install gunicorn nginx -y
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+-keyout /etc/ssl/private/nginx-selfsigned.key \
+-out /etc/ssl/certs/nginx-selfsigned.crt
+
+Country Name (2 letter code) [AU]: US
+State or Province Name (full name) [Some-State]: Washington
+Locality Name (eg, city) []: Seattle
+Organization Name (eg, company) [Internet Widgits Pty Ltd]: MyCompany
+Organizational Unit Name (eg, section) []: IT
+Common Name (e.g. server FQDN or YOUR name) []: capstone-project-group8.westus2.cloudapp.azure.com
+Email Address []: admin@mydomain.com
+
+sudo vi /etc/nginx/sites-available/default
+
+server {
+    listen 443 ssl;
+    server_name capstone-project-group8.westus2.cloudapp.azure.com;
+
+    ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+    ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name capstone-project-group8.westus2.cloudapp.azure.com;
+    return 301 https://$host$request_uri;
+}
+
+sudo nginx -t
+sudo systemctl restart nginx
+
+https://capstone-project-group8.westus2.cloudapp.azure.com
+

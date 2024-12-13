@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Playback and Player Stats</title>
+</head>
+<style>
+    pre {
+        background-color: #f8f9fa;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        overflow: auto;
+        font-size: 14px;
+        color: #343a40;
+    }
+</style>
+<body>
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Match Playback and Player Stats</h1>
+
+<!-- Video Playback Section -->
+<div class="video-container">
+    <h2>Video Playback</h2>
+    <p>Player 1: {{ player1 }}</p>
+    <p>Player 2: {{ player2 }}</p>
+    <video controls style="width: 100%; max-width: 600px; height: auto;">
+        <source src="{{ video_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video controls style="width: 100%; max-width: 600px; height: auto;">
+        <source src="{{ output_video_url | safe }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<!-- Player Statistics Section -->
+<div class="stats-container">
+    <h2>Player Comparison</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Stat</th>
+                <th>{{ player1 }}</th>
+                <th>{{ player2 }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat, values in stats.items() %}
+            <tr>
+                <td>{{ stat }}</td>
+                <td>{{ values[0] }}</td>
+                <td>{{ values[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Player Overview Section -->
+<div class="stats-container">
+    <h2>Player Overview</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Stat</th>
+                <th>{{ player1 }}</th>
+                <th>{{ player2 }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, label in {
+                "fullName": "Full Name",
+                "nationality": "Nationality",
+                "dateOfBirth": "Date of Birth",
+                "height": "Height (cm)",
+                "weight": "Weight (kg)",
+                "playingHand": "Playing Hand",
+                "playingStyle": "Playing Style",
+                "turnedProYear": "Turned Pro Year"
+            }.items() %}
+            <tr>
+                <td>{{ label }}</td>
+                <td>
+                    {{ 
+                        player1_data.playerOverview.get(key) or 
+                        player1_data.get(key) or 
+                        "N/A" 
+                    }}
+                </td>
+                <td>
+                    {{ 
+                        player2_data.playerOverview.get(key) or 
+                        player2_data.get(key) or 
+                        "N/A" 
+                    }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Career Highlights Section -->
+<div class="stats-container">
+    <h2>Career Highlights</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Stat</th>
+                <th>{{ player1 }}</th>
+                <th>{{ player2 }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Career Titles</td>
+                <td>{{ player1_data.careerHighlights.totalCareerTitles }}</td>
+                <td>{{ player2_data.careerHighlights.totalCareerTitles }}</td>
+            </tr>
+            <tr>
+                <td>Grand Slam Wins</td>
+                <td>{{ player1_data.careerHighlights.grandSlamWins }}</td>
+                <td>{{ player2_data.careerHighlights.grandSlamWins }}</td>
+            </tr>
+            <tr>
+                <td>Olympic Medals</td>
+                <td>{{ player1_data.careerHighlights.olympicMedals.details }}</td>
+                <td>{{ player2_data.careerHighlights.olympicMedals.details or 'N/A' }}</td>
+            </tr>
+            <tr>
+                <td>Career Prize Money</td>
+                <td>${{ player1_data.careerHighlights.careerPrizeMoney }}</td>
+                <td>${{ player2_data.careerHighlights.careerPrizeMoney }}</td>
+            </tr>
+            <tr>
+                <td>Career-High Ranking</td>
+                <td>{{ player1_data.careerHighlights.careerHighRanking }}</td>
+                <td>{{ player2_data.careerHighlights.careerHighRanking }}</td>
+            </tr>
+            <tr>
+                <td>Current Ranking</td>
+                <td>{{ player1_data.careerHighlights.currentRanking }}</td>
+                <td>{{ player2_data.careerHighlights.currentRanking }}</td>
+            </tr>
+            <tr>
+                <td>Year-End No. 1 Rankings</td>
+                <td>{{ player1_data.careerHighlights.yearEndNo1Rankings | join(', ') }}</td>
+                <td>{{ player2_data.careerHighlights.yearEndNo1Rankings | join(', ') }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Head-to-Head Records Section -->
+<div class="stats-container">
+    <h2>Head-to-Head Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Stat</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in player1_data.headToHeadRecords.items() %}
+                <tr>
+                    <td>{{ key | replace('_', ' ') | capitalize }}</td>
+                    <td>
+                        {% if value is mapping %}
+                            <pre>{{ value | tojson(indent=2) }}</pre>
+                        {% else %}
+                            {{ value }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- Performance Statistics Section -->
+<div class="stats-container">
+    <h2>Performance Statistics</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Stat</th>
+                <th>{{ player1 }}</th>
+                <th>{{ player2 }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Overall Win Percentage</td>
+                <td>{{ player1_data.performanceStatistics.overallWinPercentage }}%</td>
+                <td>{{ player2_data.performanceStatistics.overallWinPercentage }}%</td>
+            </tr>
+            <tr>
+                <td>Aces</td>
+                <td>{{ player1_data.performanceStatistics.serviceStats.aces }}</td>
+                <td>{{ player2_data.performanceStatistics.serviceStats.aces }}</td>
+            </tr>
+            <tr>
+                <td>Double Faults</td>
+                <td>{{ player1_data.performanceStatistics.serviceStats.doubleFaults }}</td>
+                <td>{{ player2_data.performanceStatistics.serviceStats.doubleFaults }}</td>
+            </tr>
+            <tr>
+                <td>First Serve Percentage</td>
+                <td>{{ player1_data.performanceStatistics.serviceStats.firstServePercentage }}%</td>
+                <td>{{ player2_data.performanceStatistics.serviceStats.firstServePercentage }}%</td>
+            </tr>
+            <tr>
+                <td>First Serve Points Won</td>
+                <td>{{ player1_data.performanceStatistics.serviceStats.firstServePointsWon }}%</td>
+                <td>{{ player2_data.performanceStatistics.serviceStats.firstServePointsWon }}%</td>
+            </tr>
+            <tr>
+                <td>Second Serve Points Won</td>
+                <td>{{ player1_data.performanceStatistics.serviceStats.secondServePointsWon }}%</td>
+                <td>{{ player2_data.performanceStatistics.serviceStats.secondServePointsWon }}%</td>
+            </tr>
+            <tr>
+                <td>Break Points Converted</td>
+                <td>{{ player1_data.performanceStatistics.returnStats.firstServeReturnPointsWon }}%</td>
+                <td>{{ player2_data.performanceStatistics.returnStats.firstServeReturnPointsWon }}%</td>
+            </tr>
+            <tr>
+                <td>Second Break Points Converted</td>
+                <td>{{ player1_data.performanceStatistics.returnStats.secondServeReturnPointsWon }}%</td>
+                <td>{{ player2_data.performanceStatistics.returnStats.secondServeReturnPointsWon }}%</td>
+            </tr>
+            <tr>
+                <td>Tiebreak Record</td>
+                <td>{{ player1_data.performanceStatistics.tiebreakRecord }}</td>
+                <td>{{ player2_data.performanceStatistics.tiebreakRecord }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Tournament History Section -->
+<div class="stats-container">
+    <h2>Tournament History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tournament</th>
+                <th>{{ player1 }}</th>
+                <th>{{ player2 }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Australian Open</td>
+                <td>{{ player1_data.tournamentHistory.grandSlamPerformances.australianOpen }}</td>
+                <td>{{ player2_data.tournamentHistory.grandSlamPerformances.australianOpen }}</td>
+            </tr>
+            <tr>
+                <td>French Open</td>
+                <td>{{ player1_data.tournamentHistory.grandSlamPerformances.frenchOpen }}</td>
+                <td>{{ player2_data.tournamentHistory.grandSlamPerformances.frenchOpen }}</td>
+            </tr>
+            <tr>
+                <td>Wimbledon</td>
+                <td>{{ player1_data.tournamentHistory.grandSlamPerformances.wimbledon }}</td>
+                <td>{{ player2_data.tournamentHistory.grandSlamPerformances.wimbledon }}</td>
+            </tr>
+            <tr>
+                <td>US Open</td>
+                <td>{{ player1_data.tournamentHistory.grandSlamPerformances.usOpen }}</td>
+                <td>{{ player2_data.tournamentHistory.grandSlamPerformances.usOpen }}</td>
+            </tr>
+            <tr>
+                <td>ATP Finals Titles</td>
+                <td>{{ player1_data.tournamentHistory.atpFinalsTitles }}</td>
+                <td>{{ player2_data.tournamentHistory.atpFinalsTitles }}</td>
+            </tr>
+            <tr>
+                <td>Masters Titles</td>
+                <td>{{ player1_data.tournamentHistory.mastersTitles }}</td>
+                <td>{{ player2_data.tournamentHistory.mastersTitles }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Historical Trends Section -->
+<div class="stats-container">
+    <h2>Historical Trends</h2>
+    <ul>
+        <li>{{ player1 }} Match-Win Streaks: {{ player1_data.historicalTrends.matchWinStreaks }}</li>
+        <li>{{ player2 }} Match-Win Streaks: {{ player2_data.historicalTrends.matchWinStreaks }}</li>
+        <li>{{ player1 }} Performance Against Top-10 Players: {{ player1_data.historicalTrends.performanceAgainstTop10Players }}</li>
+        <li>{{ player2 }} Performance Against Top-10 Players: {{ player2_data.historicalTrends.performanceAgainstTop10Players }}</li>
+        <li>{{ player1 }} Notable Upsets: {{ player1_data.historicalTrends.notableUpsets }}</li>
+        <li>{{ player2 }} Notable Upsets: {{ player2_data.historicalTrends.notableUpsets }}</li>
+    </ul>
+</div>
+
+<!-- Graph Section -->
+<div class="graphs-container">
+    <h2>Comparison Visualizations</h2>
+    <div class="graphs">
+        {% for graph_name, graph_path in graph_paths.items() %}
+        <div class="graph">
+            <h3>{{ graph_name.replace('_', ' ').title() }}</h3>
+            <img src="{{ graph_path }}" alt="{{ graph_name }}">
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+</body>
+</html>

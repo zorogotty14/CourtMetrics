@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ player.get('name', 'Player Name Not Available') }}</h1>
+    <h2>Profile</h2>
+    <p><strong>Ranking:</strong> {{ player.get('ranking', 'N/A') }}</p>
+    <p><strong>Country:</strong> {{ player.get('country', {}).get('name', 'N/A') }}</p>
+    <p><strong>Gender:</strong> {{ player.get('gender', 'N/A') }}</p>
+    <p><strong>Short Name:</strong> {{ player.get('shortName', 'N/A') }}</p>
+    <p><strong>Slug:</strong> {{ player.get('slug', 'N/A') }}</p>
+    <p><strong>User Count:</strong> {{ player.get('userCount', 'N/A') }}</p>
+    <p><strong>Primary Color:</strong> {{ player.get('teamColors', {}).get('primary', 'N/A') }}</p>
+    <p><strong>Secondary Color:</strong> {{ player.get('teamColors', {}).get('secondary', 'N/A') }}</p>
+{% endblock %}

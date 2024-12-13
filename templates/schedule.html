@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Tennis Schedule</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Home Player</th>
+                <th>Away Player</th>
+                <th>Home Player Score</th>
+                <th>Away Player Score</th>
+                <th>Ground Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.homeTeam.name }}</td>
+                    <td>{{ event.awayTeam.name }}</td>
+                    <td>{{ event.homeScore.current }}</td>
+                    <td>{{ event.awayScore.current }}</td>
+                    <td>{{ event.groundType }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

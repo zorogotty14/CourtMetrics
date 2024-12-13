@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>ATP Player Rankings</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Player Name</th>
+            <th>Points</th>
+            <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for player in rankings %}
+            <tr>
+                <td>{{ player.ranking }}</td>
+                <!-- Format player name for search (e.g., 'Sinner J.') -->
+                <td>
+                    <a href="/player_search?query={{ player.team.name.split(' ')[0] }}">
+                        {{ player.team.name }}
+                    </a>
+                </td>
+                <td>{{ player.points }}</td>
+                <td>{{ player.team.country.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
